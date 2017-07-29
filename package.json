@@ -1,10 +1,11 @@
 {
   "name": "channels-rest-client",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "A nodejs REST client for accessing Channels service providers",
-  "main": "index.js",
+  "main": "bin/index.js",
+  "typings": "bin/main.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "npm install"
   },
   "repository": {
     "type": "git",
