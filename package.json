@@ -1,6 +1,6 @@
 {
   "name": "channels-rest-client",
-  "version": "0.2.9",
+  "version": "0.2.11",
   "description": "A nodejs REST client for accessing Channels service providers",
   "main": "index.js",
   "scripts": {
