@@ -366,7 +366,7 @@ var ChannelsRestClient = (function () {
             }
             url = url + filename;
         }
-        return;
+        return url;
     };
     return ChannelsRestClient;
 }());

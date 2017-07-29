@@ -175,7 +175,7 @@ export class ChannelsRestClient {
       }
       url = url + filename;
     }
-    return;
+    return url;
   }
 }
 
