@@ -36,10 +36,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var RestClient = require('node-rest-client').Client;
-var SWITCH_PROTOCOL = 1;
-var BANK_PROTOCOL = 1;
-var CARD_REGISTRY_PROTOCOL = 1;
-var MINE_PROTOCOL = 1;
+exports.SWITCH_PROTOCOL_VERSION = 1;
+exports.BANK_PROTOCOL_VERSION = 1;
+exports.CARD_REGISTRY_PROTOCOL_VERSION = 1;
+exports.MINE_PROTOCOL_VERSION = 1;
 var ChannelsRestClient = (function () {
     function ChannelsRestClient() {
         this.restClient = new RestClient();
@@ -97,7 +97,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-user', {})];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'register-user', {})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -107,7 +107,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, SWITCH_PROTOCOL, 'register-user', details ? details : {})];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'register-user', details ? details : {})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -117,7 +117,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'register-user', {})];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'register-user', {})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -127,7 +127,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, MINE_PROTOCOL, 'register-user', {})];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.MINE_PROTOCOL_VERSION, 'register-user', {})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -137,7 +137,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-bank', details)];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'register-bank', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -147,7 +147,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-mine', details)];
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'register-mine', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -157,7 +157,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'get-account', {})];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'get-account', {})];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -167,7 +167,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'transfer', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'transfer', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -177,7 +177,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'interbank-transfer', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.BANK_PROTOCOL_VERSION, 'interbank-transfer', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -210,7 +210,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'pay', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'pay', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -220,7 +220,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'create', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'create', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -230,7 +230,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'share', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'share', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -240,7 +240,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'get', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'get', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -250,7 +250,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'accept', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'accept', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -260,7 +260,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'delete', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'delete', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -270,7 +270,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'list', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'list', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -280,7 +280,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'get-registration', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'get-registration', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -290,7 +290,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, SWITCH_PROTOCOL, 'update-registration', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.SWITCH_PROTOCOL_VERSION, 'update-registration', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -300,7 +300,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'pay', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'pay', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -310,7 +310,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'search', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'search', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -320,7 +320,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'get-reviews', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'get-reviews', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -330,7 +330,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'review', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'review', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -340,7 +340,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, CARD_REGISTRY_PROTOCOL, 'notify-purchase', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.CARD_REGISTRY_PROTOCOL_VERSION, 'notify-purchase', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -350,7 +350,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, MINE_PROTOCOL, 'poll', details)];
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, exports.MINE_PROTOCOL_VERSION, 'poll', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });

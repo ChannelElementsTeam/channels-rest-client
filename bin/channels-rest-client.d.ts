@@ -1,4 +1,8 @@
 import { BankServiceDescription, SwitchServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, BankRegisterUserResponse, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, MineRegisterUserResponse, BankGetAccountResponse, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse, ChannelShareCodeResponse, BankRegisterBankDetails, BankRegisterBankResponse, BankRegisterMineResponse, BankRegisterMineDetails, InterBankTransferResponse, InterBankTransferDetails } from "channels-common";
+export declare const SWITCH_PROTOCOL_VERSION = 1;
+export declare const BANK_PROTOCOL_VERSION = 1;
+export declare const CARD_REGISTRY_PROTOCOL_VERSION = 1;
+export declare const MINE_PROTOCOL_VERSION = 1;
 export declare class ChannelsRestClient {
     private restClient;
     getSwitchDescription(providerUrl: string): Promise<SwitchServiceDescription>;
