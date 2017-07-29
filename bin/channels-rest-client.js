@@ -42,7 +42,7 @@ var CARD_REGISTRY_PROTOCOL = 1;
 var MINE_PROTOCOL = 1;
 var ChannelsRestClient = (function () {
     function ChannelsRestClient() {
-        this.restClient = new RestClient.Client();
+        this.restClient = new RestClient();
     }
     ChannelsRestClient.prototype.getSwitchDescription = function (providerUrl) {
         return __awaiter(this, void 0, void 0, function () {

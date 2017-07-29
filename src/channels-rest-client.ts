@@ -9,7 +9,7 @@ const CARD_REGISTRY_PROTOCOL = 1;
 const MINE_PROTOCOL = 1;
 
 export class ChannelsRestClient {
-  private restClient = new RestClient.Client() as IRestClient;
+  private restClient = new RestClient() as IRestClient;
 
   async getSwitchDescription(providerUrl: string): Promise<SwitchServiceDescription> {
     return this.getServiceDescription<SwitchServiceDescription>(this.normalizeProviderUrl(providerUrl, 'channels-switch.json'));
