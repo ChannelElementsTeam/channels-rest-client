@@ -1,0 +1,33 @@
+{
+  "name": "channels-rest-client",
+  "version": "0.2.8",
+  "description": "A nodejs REST client for accessing Channels service providers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChannelElementsTeam/channels-rest-client.git"
+  },
+  "author": "Hivepoint, Inc.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ChannelElementsTeam/channels-rest-client/issues"
+  },
+  "homepage": "https://github.com/ChannelElementsTeam/channels-rest-client#readme",
+  "dependencies": {
+    "channels-common": "^0.2.8",
+    "express": "^4.15.3",
+    "text-encoding": "^0.6.4",
+    "text-encoding-utf-8": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.0.36",
+    "@types/node": "^8.0.3",
+    "@types/text-encoding": "0.0.31",
+    "ts-loader": "^2.1.0",
+    "typescript": "^2.3.4",
+    "webpack": "^3.0.0"
+  }
+}
