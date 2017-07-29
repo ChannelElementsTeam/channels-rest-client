@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BankServiceDescription, SwitchServiceDescription, ServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, ServiceRequest, BankRegisterUserResponse, BankRegisterUserDetails, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, CardRegistryRegisterUserDetails, MineRegisterUserResponse, MineRegisterUserDetails, BankGetAccountResponse, BankGetAccountDetails, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse } from "channels-common";
+import { BankServiceDescription, SwitchServiceDescription, ServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, ServiceRequest, BankRegisterUserResponse, BankRegisterUserDetails, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, CardRegistryRegisterUserDetails, MineRegisterUserResponse, MineRegisterUserDetails, BankGetAccountResponse, BankGetAccountDetails, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse, ChannelShareCodeResponse } from "channels-common";
 
 const RestClient = require('node-rest-client').Client;
 
@@ -12,18 +12,18 @@ export class ChannelsRestClient {
   private restClient = new RestClient.Client() as IRestClient;
 
   async getSwitchDescription(providerUrl: string): Promise<SwitchServiceDescription> {
-    return this.getServiceDescription<SwitchServiceDescription>(providerUrl);
+    return this.getServiceDescription<SwitchServiceDescription>(this.normalizeProviderUrl(providerUrl, 'channels-switch.json'));
   }
 
   async getBankDescription(providerUrl: string): Promise<BankServiceDescription> {
-    return this.getServiceDescription<BankServiceDescription>(providerUrl);
+    return this.getServiceDescription<BankServiceDescription>(this.normalizeProviderUrl(providerUrl, 'channels-bank.json'));
   }
   async getCardRegistryDescription(providerUrl: string): Promise<CardRegistryServiceDescription> {
-    return this.getServiceDescription<CardRegistryServiceDescription>(providerUrl);
+    return this.getServiceDescription<CardRegistryServiceDescription>(this.normalizeProviderUrl(providerUrl, 'channels-card-registry.json'));
   }
 
   async getMineDescription(providerUrl: string): Promise<MineServiceDescription> {
-    return await this.getServiceDescription<MineServiceDescription>(providerUrl);
+    return await this.getServiceDescription<MineServiceDescription>(this.normalizeProviderUrl(providerUrl, 'channels-mine.json'));
   }
 
   private async getServiceDescription<T extends ServiceDescription>(providerUrl: string): Promise<T> {
@@ -61,6 +61,24 @@ export class ChannelsRestClient {
 
   async bankTransfer(serviceUrl: string, identity: SignedAddressIdentity, details: BankTransferDetails): Promise<BankTransferResponse> {
     return await this.requestService<SignedAddressIdentity, BankTransferDetails, BankTransferResponse>(identity, serviceUrl, BANK_PROTOCOL, 'transfer', details);
+  }
+
+  async switchGetInvitationFromShareCode(shareCodeUrl: string): Promise<ChannelShareCodeResponse> {
+    return new Promise<ChannelShareCodeResponse>((resolve, reject) => {
+      const args: RestArgs = {
+        headers: {
+          'Accept': 'application/json'
+        }
+      };
+      this.restClient.get(shareCodeUrl, args, (data: ChannelShareCodeResponse, response: Response) => {
+        if (response.statusCode === 200) {
+          resolve(data);
+        } else {
+          console.error("Failed", response.statusCode);
+          reject("Get share code failed");
+        }
+      });
+    });
   }
 
   async switchPay(serviceUrl: string, identity: SignedAddressIdentity, details: SwitchPaymentDetails): Promise<SwitchPaymentResponse> {
@@ -145,6 +163,19 @@ export class ChannelsRestClient {
         }
       });
     });
+  }
+
+  private normalizeProviderUrl(url: string, filename: string): string {
+    if (url.indexOf(':') < 0) {
+      url = 'https://' + url;
+    }
+    if (/^https?:\/\/[^\/]+\/?$/.test(url)) {
+      if (!url.endsWith('/')) {
+        url = url + '/';
+      }
+      url = url + filename;
+    }
+    return;
   }
 }
 

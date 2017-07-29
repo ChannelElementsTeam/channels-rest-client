@@ -47,21 +47,21 @@ var ChannelsRestClient = (function () {
     ChannelsRestClient.prototype.getSwitchDescription = function (providerUrl) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.getServiceDescription(providerUrl)];
+                return [2 /*return*/, this.getServiceDescription(this.normalizeProviderUrl(providerUrl, 'channels-switch.json'))];
             });
         });
     };
     ChannelsRestClient.prototype.getBankDescription = function (providerUrl) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.getServiceDescription(providerUrl)];
+                return [2 /*return*/, this.getServiceDescription(this.normalizeProviderUrl(providerUrl, 'channels-bank.json'))];
             });
         });
     };
     ChannelsRestClient.prototype.getCardRegistryDescription = function (providerUrl) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
-                return [2 /*return*/, this.getServiceDescription(providerUrl)];
+                return [2 /*return*/, this.getServiceDescription(this.normalizeProviderUrl(providerUrl, 'channels-card-registry.json'))];
             });
         });
     };
@@ -69,7 +69,7 @@ var ChannelsRestClient = (function () {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getServiceDescription(providerUrl)];
+                    case 0: return [4 /*yield*/, this.getServiceDescription(this.normalizeProviderUrl(providerUrl, 'channels-mine.json'))];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
@@ -150,6 +150,29 @@ var ChannelsRestClient = (function () {
                     case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'transfer', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
+            });
+        });
+    };
+    ChannelsRestClient.prototype.switchGetInvitationFromShareCode = function (shareCodeUrl) {
+        return __awaiter(this, void 0, void 0, function () {
+            var _this = this;
+            return __generator(this, function (_a) {
+                return [2 /*return*/, new Promise(function (resolve, reject) {
+                        var args = {
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        };
+                        _this.restClient.get(shareCodeUrl, args, function (data, response) {
+                            if (response.statusCode === 200) {
+                                resolve(data);
+                            }
+                            else {
+                                console.error("Failed", response.statusCode);
+                                reject("Get share code failed");
+                            }
+                        });
+                    })];
             });
         });
     };
@@ -332,6 +355,18 @@ var ChannelsRestClient = (function () {
                     })];
             });
         });
+    };
+    ChannelsRestClient.prototype.normalizeProviderUrl = function (url, filename) {
+        if (url.indexOf(':') < 0) {
+            url = 'https://' + url;
+        }
+        if (/^https?:\/\/[^\/]+\/?$/.test(url)) {
+            if (!url.endsWith('/')) {
+                url = url + '/';
+            }
+            url = url + filename;
+        }
+        return;
     };
     return ChannelsRestClient;
 }());

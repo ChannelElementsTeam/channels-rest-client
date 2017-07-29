@@ -1,4 +1,4 @@
-import { BankServiceDescription, SwitchServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, BankRegisterUserResponse, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, MineRegisterUserResponse, BankGetAccountResponse, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse } from "channels-common";
+import { BankServiceDescription, SwitchServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, BankRegisterUserResponse, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, MineRegisterUserResponse, BankGetAccountResponse, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse, ChannelShareCodeResponse } from "channels-common";
 export declare class ChannelsRestClient {
     private restClient;
     getSwitchDescription(providerUrl: string): Promise<SwitchServiceDescription>;
@@ -12,6 +12,7 @@ export declare class ChannelsRestClient {
     registerMineUser(serviceUrl: string, signedKeyIdentity: SignedKeyIdentity): Promise<MineRegisterUserResponse>;
     bankGetAccount(serviceUrl: string, identity: SignedAddressIdentity): Promise<BankGetAccountResponse>;
     bankTransfer(serviceUrl: string, identity: SignedAddressIdentity, details: BankTransferDetails): Promise<BankTransferResponse>;
+    switchGetInvitationFromShareCode(shareCodeUrl: string): Promise<ChannelShareCodeResponse>;
     switchPay(serviceUrl: string, identity: SignedAddressIdentity, details: SwitchPaymentDetails): Promise<SwitchPaymentResponse>;
     switchCreateChannel(serviceUrl: string, identity: SignedAddressIdentity, details: ChannelCreateDetails): Promise<ChannelCreateResponse>;
     switchShareChannel(serviceUrl: string, identity: SignedAddressIdentity, details: ChannelShareDetails): Promise<ChannelShareResponse>;
@@ -28,6 +29,7 @@ export declare class ChannelsRestClient {
     cardRegistryNotifyPurchase(serviceUrl: string, identity: SignedAddressIdentity, details: CardRegistryNotifyPurchaseDetails): Promise<CardRegistryNotifyPurchaseResponse>;
     minePoll(serviceUrl: string, identity: SignedAddressIdentity, details: MinePollDetails): Promise<MinePollResponse>;
     private requestService<I, D, T>(identity, serviceUrl, protocolVersion, serviceName, details);
+    private normalizeProviderUrl(url, filename);
 }
 declare const channelsRestClient: ChannelsRestClient;
 export { channelsRestClient };
