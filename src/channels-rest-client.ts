@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { BankServiceDescription, SwitchServiceDescription, ServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, ServiceRequest, BankRegisterUserResponse, BankRegisterUserDetails, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, CardRegistryRegisterUserDetails, MineRegisterUserResponse, MineRegisterUserDetails, BankGetAccountResponse, BankGetAccountDetails, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse, ChannelShareCodeResponse } from "channels-common";
+import { BankServiceDescription, SwitchServiceDescription, ServiceDescription, CardRegistryServiceDescription, MineServiceDescription, SignedKeyIdentity, SignedAddressIdentity, ServiceRequest, BankRegisterUserResponse, BankRegisterUserDetails, SwitchRegisterUserDetails, SwitchRegisterUserResponse, CardRegistryRegisterUserResponse, CardRegistryRegisterUserDetails, MineRegisterUserResponse, MineRegisterUserDetails, BankGetAccountResponse, BankGetAccountDetails, BankTransferDetails, BankTransferResponse, SwitchPaymentDetails, SwitchPaymentResponse, ChannelCreateResponse, ChannelCreateDetails, ChannelShareDetails, ChannelShareResponse, ChannelGetResponse, ChannelGetDetails, ChannelAcceptResponse, ChannelAcceptDetails, ChannelDeleteDetails, ChannelDeleteResponse, ChannelsListDetails, ChannelsListResponse, GetSwitchRegistrationResponse, GetSwitchRegistrationDetails, UpdateSwitchRegistrationResponse, UpdateSwitchRegistrationDetails, CardRegistryPaymentDetails, CardRegistryPaymentResponse, CardRegistrySearchDetails, CardRegistrySearchResponse, CardRegistryGetReviewsDetails, CardRegistryGetReviewsResponse, CardRegistryReviewDetails, CardRegistryReviewResponse, CardRegistryNotifyPurchaseDetails, CardRegistryNotifyPurchaseResponse, MinePollDetails, MinePollResponse, ChannelShareCodeResponse, BankRegisterBankDetails, BankRegisterBankResponse, BankRegisterMineResponse, BankRegisterMineDetails, InterBankTransferResponse, InterBankTransferDetails } from "channels-common";
 
 const RestClient = require('node-rest-client').Client;
 
@@ -55,12 +55,23 @@ export class ChannelsRestClient {
     return await this.requestService<SignedKeyIdentity, MineRegisterUserDetails, MineRegisterUserResponse>(signedKeyIdentity, serviceUrl, MINE_PROTOCOL, 'register-user', {});
   }
 
+  async registerBankBank(serviceUrl: string, signedKeyIdentity: SignedKeyIdentity, details: BankRegisterBankDetails): Promise<BankRegisterBankResponse> {
+    return await this.requestService<SignedKeyIdentity, BankRegisterBankDetails, BankRegisterBankResponse>(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-bank', details);
+  }
+  async registerBankMine(serviceUrl: string, signedKeyIdentity: SignedKeyIdentity, details: BankRegisterMineDetails): Promise<BankRegisterMineResponse> {
+    return await this.requestService<SignedKeyIdentity, BankRegisterMineDetails, BankRegisterMineResponse>(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-mine', details);
+  }
+
   async bankGetAccount(serviceUrl: string, identity: SignedAddressIdentity): Promise<BankGetAccountResponse> {
     return await this.requestService<SignedAddressIdentity, BankGetAccountDetails, BankGetAccountResponse>(identity, serviceUrl, BANK_PROTOCOL, 'get-account', {});
   }
 
   async bankTransfer(serviceUrl: string, identity: SignedAddressIdentity, details: BankTransferDetails): Promise<BankTransferResponse> {
     return await this.requestService<SignedAddressIdentity, BankTransferDetails, BankTransferResponse>(identity, serviceUrl, BANK_PROTOCOL, 'transfer', details);
+  }
+
+  async interBankTransfer(serviceUrl: string, identity: SignedAddressIdentity, details: InterBankTransferDetails): Promise<InterBankTransferResponse> {
+    return await this.requestService<SignedAddressIdentity, InterBankTransferDetails, InterBankTransferResponse>(identity, serviceUrl, BANK_PROTOCOL, 'interbank-transfer', details);
   }
 
   async switchGetInvitationFromShareCode(shareCodeUrl: string): Promise<ChannelShareCodeResponse> {

@@ -1,6 +1,6 @@
 {
   "name": "channels-rest-client",
-  "version": "0.2.16",
+  "version": "0.2.17",
   "description": "A nodejs REST client for accessing Channels service providers",
   "main": "bin/index.js",
   "typings": "bin/main.d.ts",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/ChannelElementsTeam/channels-rest-client#readme",
   "dependencies": {
-    "channels-common": "^0.2.8",
+    "channels-common": "^0.2.9",
     "express": "^4.15.3",
     "text-encoding": "^0.6.4",
     "text-encoding-utf-8": "^1.0.1"

@@ -133,6 +133,26 @@ var ChannelsRestClient = (function () {
             });
         });
     };
+    ChannelsRestClient.prototype.registerBankBank = function (serviceUrl, signedKeyIdentity, details) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-bank', details)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    ChannelsRestClient.prototype.registerBankMine = function (serviceUrl, signedKeyIdentity, details) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.requestService(signedKeyIdentity, serviceUrl, BANK_PROTOCOL, 'register-mine', details)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
     ChannelsRestClient.prototype.bankGetAccount = function (serviceUrl, identity) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
@@ -148,6 +168,16 @@ var ChannelsRestClient = (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'transfer', details)];
+                    case 1: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    ChannelsRestClient.prototype.interBankTransfer = function (serviceUrl, identity, details) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.requestService(identity, serviceUrl, BANK_PROTOCOL, 'interbank-transfer', details)];
                     case 1: return [2 /*return*/, _a.sent()];
                 }
             });
